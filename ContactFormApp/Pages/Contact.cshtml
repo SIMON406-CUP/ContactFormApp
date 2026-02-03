@@ -1,0 +1,40 @@
+﻿@page
+@model ContactFormApp.Pages.ContactModel
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<h2>Contact Us</h2>
+
+<form method="post">
+    <div>
+        <label>Name</label>
+        <input asp-for="Contact.Name" />
+        <span asp-validation-for="Contact.Name" style="color:red"></span>
+    </div>
+
+    <div>
+        <label>Email</label>
+        <input asp-for="Contact.Email" />
+        <span asp-validation-for="Contact.Email" style="color:red"></span>
+    </div>
+
+    <div>
+        <label>Message</label>
+        <textarea asp-for="Contact.Message"></textarea>
+        <span asp-validation-for="Contact.Message" style="color:red"></span>
+    </div>
+
+    <button type="submit">Send Message</button>
+</form>
+
+@if (Model.SuccessMessage != null)
+{
+    <p style="color:green">@Model.SuccessMessage</p>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

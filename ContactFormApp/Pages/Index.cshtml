@@ -1,0 +1,75 @@
+﻿@page
+@model ContactFormApp.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="hero bg-primary text-white text-center py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-3">
+            Build Modern Contact Forms
+        </h1>
+        <p class="lead mb-4">
+            ContactFormApp helps you create clean, secure and professional contact forms in minutes.
+        </p>
+        <a asp-page="/Contact" class="btn btn-light btn-lg shadow">
+            Open ContactForm
+        </a>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Why ContactFormApp?</h2>
+            <p class="text-muted">Everything you need for a professional contact system.</p>
+        </div>
+
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm p-3">
+                    <div class="card-body">
+                        <h5 class="fw-bold">User Friendly</h5>
+                        <p class="text-muted">
+                            Simple and clean interface that anyone can use easily.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm p-3">
+                    <div class="card-body">
+                        <h5 class="fw-bold">Secure & Reliable</h5>
+                        <p class="text-muted">
+                            Your data is handled safely using modern web standards.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm p-3">
+                    <div class="card-body">
+                        <h5 class="fw-bold">Easy Integration</h5>
+                        <p class="text-muted">
+                            Plug it into any project with minimal setup.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta bg-light py-5 text-center">
+    <div class="container">
+        <h2 class="fw-bold mb-3">Ready to get started?</h2>
+        <p class="lead text-muted mb-4">
+            Try the ContactForm and see how easy it is.
+        </p>
+        <a asp-page="/Contact" class="btn btn-primary btn-lg px-5">
+            Launch ContactForm
+        </a>
+    </div>
+</section>
