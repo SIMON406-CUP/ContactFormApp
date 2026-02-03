@@ -1,3 +1,9 @@
+
+/* Page background */
+body {
+    background-color: #e0f7fa; /* light blue */
+}
+
 html {
   font-size: 14px;
 }
