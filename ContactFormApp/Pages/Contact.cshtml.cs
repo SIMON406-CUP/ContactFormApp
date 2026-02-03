@@ -1,39 +1,43 @@
-using ContactFormApp.Models;
-using ContactFormApp.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ContactFormApp.Data;
+using ContactFormApp.Models;
 
 namespace ContactFormApp.Pages
 {
     public class ContactModel : PageModel
     {
-        private readonly ContactService _contactService;
+        private readonly ContactFormContext _context;
 
-        public ContactModel()
+        public ContactModel(ContactFormContext context)
         {
-            _contactService = new ContactService();
+            _context = context;
         }
 
         [BindProperty]
-        public Contact Contact { get; set; }
+        public ContactMessage ContactMessage { get; set; }
 
         public string SuccessMessage { get; set; }
 
         public void OnGet()
         {
-            // Nothing for now
         }
 
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
+                // Validation failed, stay on page and show errors
                 return Page();
             }
 
-            _contactService.SaveContact(Contact);
+            // Save the message
+            _context.ContactMessages.Add(ContactMessage);
+            _context.SaveChanges();
+
             SuccessMessage = "Your message has been sent successfully!";
-            ModelState.Clear(); // clear form
+            ModelState.Clear(); // clear the form
+
             return Page();
         }
     }

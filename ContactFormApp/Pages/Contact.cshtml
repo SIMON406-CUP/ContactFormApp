@@ -1,40 +1,44 @@
 ﻿@page
 @model ContactFormApp.Pages.ContactModel
 @{
-    ViewData["Title"] = "Contact Us";
+    ViewData["Title"] = "Contact Form";
 }
 
-<h2>Contact Us</h2>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="mb-4 text-center">ContactForm</h2>
 
-<form method="post">
-    <div>
-        <label>Name</label>
-        <input asp-for="Contact.Name" />
-        <span asp-validation-for="Contact.Name" style="color:red"></span>
+        @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+        {
+            <div class="alert alert-success">
+                @Model.SuccessMessage
+            </div>
+        }
+
+        <form method="post">
+            <div class="mb-3">
+                <label asp-for="ContactMessage.Name" class="form-label"></label>
+                <input asp-for="ContactMessage.Name" class="form-control" />
+                <span asp-validation-for="ContactMessage.Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ContactMessage.Email" class="form-label"></label>
+                <input asp-for="ContactMessage.Email" class="form-control" />
+                <span asp-validation-for="ContactMessage.Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ContactMessage.Message" class="form-label"></label>
+                <textarea asp-for="ContactMessage.Message" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="ContactMessage.Message" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+        </form>
     </div>
-
-    <div>
-        <label>Email</label>
-        <input asp-for="Contact.Email" />
-        <span asp-validation-for="Contact.Email" style="color:red"></span>
-    </div>
-
-    <div>
-        <label>Message</label>
-        <textarea asp-for="Contact.Message"></textarea>
-        <span asp-validation-for="Contact.Message" style="color:red"></span>
-    </div>
-
-    <button type="submit">Send Message</button>
-</form>
-
-@if (Model.SuccessMessage != null)
-{
-    <p style="color:green">@Model.SuccessMessage</p>
-}
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
-
-
